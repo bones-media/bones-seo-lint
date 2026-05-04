@@ -1,6 +1,6 @@
 {
   "name": "bones-seo-lint",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Build-time SEO linter for Bones Media client sites. Catches recurring failures (meta length, title issues, missing schema, weak H1s) before they ship.",
   "type": "module",
   "bin": {

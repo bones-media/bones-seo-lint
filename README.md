@@ -8,6 +8,21 @@ Every site launch surfaces the same handful of SEO issues: meta descriptions too
 
 ## Install
 
+For a brand new repo, use the one-shot setup:
+
+```sh
+npx github:bones-media/bones-seo-lint init \
+  --brand "Acme Co" \
+  --keyword "fitness equipment" \
+  --location "Westbrook, ME" \
+  --schema "LocalBusiness"
+pnpm install
+```
+
+`init` writes `bones-seo.config.json`, adds the lint to `devDependencies`, and adds a `postbuild` script. Detects Astro and Next.js automatically; pass `--dist <dir>` to override the build output path. Pass `--force` to overwrite an existing config.
+
+For manual install:
+
 ```sh
 pnpm add -D github:bones-media/bones-seo-lint
 ```

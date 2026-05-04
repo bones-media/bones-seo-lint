@@ -2,6 +2,10 @@ export const name = 'h1-keyword';
 export const severity = 'warn';
 
 export function check(page, config) {
+  if (!config.h1KeywordRoutes.includes(page.route)) {
+    return { ok: true };
+  }
+
   const h1 = page.doc.querySelector('h1')?.text?.trim() ?? '';
   if (!h1) {
     return { ok: false, message: 'No H1 found on page' };

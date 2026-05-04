@@ -2,5 +2,6 @@
   "brand": "Acme Fitness",
   "primaryKeyword": "fitness equipment",
   "location": "Westbrook, ME",
-  "schemaType": "LocalBusiness"
+  "schemaType": "LocalBusiness",
+  "h1KeywordRoutes": ["/", "/about"]
 }

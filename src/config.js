@@ -3,11 +3,11 @@ import { join } from 'node:path';
 
 const CONFIG_FILENAME = 'bones-seo.config.json';
 
-const REQUIRED_FIELDS = ['brand', 'primaryKeyword', 'location'];
+const REQUIRED_FIELDS = ['brand', 'primaryKeyword', 'location', 'schemaType'];
 
 const DEFAULTS = {
   secondaryKeywords: [],
-  schemaType: 'LocalBusiness',
+  h1KeywordRoutes: ['/'],
 };
 
 export async function loadConfig(cwd) {

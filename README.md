@@ -4,9 +4,7 @@ Build-time SEO linter for Bones Media client sites. Reads the static HTML output
 
 ## Why this exists
 
-Every WaaS launch surfaces the same handful of issues: meta descriptions too long, titles weak or missing, schema scoped wrong, H1s missing the brand or primary keyword. This linter encodes those checks so they fail at build time instead of being caught manually weeks later.
-
-Background: [`2026-05-02-launch-playbook-optimization.md`](https://example.com) in the vault.
+Every site launch surfaces the same handful of SEO issues: meta descriptions too long, titles weak or missing, schema scoped wrong, H1s missing the brand or primary keyword. This linter encodes those checks so they fail at build time instead of being caught manually weeks later.
 
 ## Install
 
@@ -20,10 +18,10 @@ Drop a `bones-seo.config.json` in the project root.
 
 ```json
 {
-  "brand": "Workout Fitness Maine",
-  "primaryKeyword": "fitness equipment",
-  "secondaryKeywords": ["commercial fitness", "flooring"],
-  "location": "Westbrook, ME",
+  "brand": "Acme Co",
+  "primaryKeyword": "service or product keyword",
+  "secondaryKeywords": ["adjacent service", "complementary product"],
+  "location": "City, ST",
   "schemaType": "LocalBusiness"
 }
 ```

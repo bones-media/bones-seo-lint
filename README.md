@@ -1,0 +1,75 @@
+# bones-seo-lint
+
+Build-time SEO linter for Bones Media client sites. Reads the static HTML output of a site (default `dist/`) and flags recurring SEO failures that should never make it to production.
+
+## Why this exists
+
+Every WaaS launch surfaces the same handful of issues: meta descriptions too long, titles weak or missing, schema scoped wrong, H1s missing the brand or primary keyword. This linter encodes those checks so they fail at build time instead of being caught manually weeks later.
+
+Background: [`2026-05-02-launch-playbook-optimization.md`](https://example.com) in the vault.
+
+## Install
+
+```sh
+pnpm add -D github:bones-media/bones-seo-lint
+```
+
+## Configure
+
+Drop a `bones-seo.config.json` in the project root.
+
+```json
+{
+  "brand": "Workout Fitness Maine",
+  "primaryKeyword": "fitness equipment",
+  "secondaryKeywords": ["commercial fitness", "flooring"],
+  "location": "Westbrook, ME",
+  "schemaType": "LocalBusiness"
+}
+```
+
+| Field | Required | Notes |
+|-------|----------|-------|
+| `brand` | yes | Used in H1 + title brand checks |
+| `primaryKeyword` | yes | Used in H1 keyword check (case-insensitive substring) |
+| `secondaryKeywords` | no | Reserved for v0.2 |
+| `location` | yes | Reserved for v0.2 entity-signal checks |
+| `schemaType` | no | Defaults to `LocalBusiness`. Schema scope check warns if found on more than the homepage |
+
+## Run
+
+After your build completes:
+
+```sh
+npx bones-seo-lint           # checks ./dist
+npx bones-seo-lint build     # checks ./build
+```
+
+Add to `package.json` for automatic post-build checks:
+
+```json
+{
+  "scripts": {
+    "build": "astro build",
+    "postbuild": "bones-seo-lint"
+  }
+}
+```
+
+## Checks
+
+| Check | Severity | What it catches |
+|-------|----------|-----------------|
+| `meta-description-length` | FAIL | `<meta name="description">` over 155 chars |
+| `title-length` | FAIL | Missing `<title>` or over 200 chars |
+| `og-image` | FAIL | Missing `<meta property="og:image">` |
+| `h1-keyword` | WARN | H1 missing brand or primary keyword |
+| `schema-scope` | WARN | Configured schema type appears on more than the homepage |
+| `single-h1` | WARN | More than one H1 on a page |
+
+## Exit codes
+
+- `0` — no FAILs
+- `1` — at least one FAIL
+
+WARN-only runs still exit 0.

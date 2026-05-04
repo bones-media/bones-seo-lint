@@ -1,0 +1,28 @@
+{
+  "name": "bones-seo-lint",
+  "version": "0.1.0",
+  "description": "Build-time SEO linter for Bones Media client sites. Catches recurring failures (meta length, title issues, missing schema, weak H1s) before they ship.",
+  "type": "module",
+  "bin": {
+    "bones-seo-lint": "./bin/cli.js"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "node-html-parser": "^6.1.13"
+  },
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "license": "UNLICENSED",
+  "private": false
+}

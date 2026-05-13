@@ -23,6 +23,11 @@
   "scripts": {
     "test": "node --test test/"
   },
+  "packageManager": "pnpm@10.30.0",
+  "pnpm": {
+    "minimumReleaseAge": 4320,
+    "onlyBuiltDependencies": []
+  },
   "license": "UNLICENSED",
   "private": false
 }
